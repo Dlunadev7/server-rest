@@ -14,7 +14,7 @@ class Server {
     // Coneccion a DB
 
     this.conectarDB()
-
+    
     // Middlewares
 
     this.middleware();
@@ -25,9 +25,9 @@ class Server {
     this.routes();
   }
 
-    async conectarDB(){
-      await dbConnection()
-    };
+  async conectarDB(){
+    await dbConnection()
+  };
 
   middleware() {
     // CORS
