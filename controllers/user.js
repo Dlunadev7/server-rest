@@ -2,7 +2,7 @@ const { response, request } = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('../models/user');
 
-const userGet = async(req, res = response) => {
+const userGet = async(req = request, res = response) => {
 
   // const {q, nombre = 'no name', apikey} = req.query;
 
@@ -53,7 +53,6 @@ const userPost = async(req = request, res = response) => {
   await usuario.save();
 
   res.json({
-    msg: 'Post API - controlador',
     usuario
   });
 };
@@ -75,13 +74,7 @@ const userPut = async(req, res = response) => {
 
   const user = await User.findByIdAndUpdate( id, rest );
 
-  res.json({user});
-};
-
-const userPatch = (req, res = response) => {
-  res.json({
-    msg: 'Patch API - controlador'
-  });
+  res.json(user);
 };
 
 const userDelete = async(req, res = response) => {
@@ -95,6 +88,12 @@ const userDelete = async(req, res = response) => {
   const user = await User.findByIdAndUpdate(id, { state: false })
 
   res.json(user);
+};
+
+const userPatch = (req, res = response) => {
+  res.json({
+    msg: 'Patch API - controlador'
+  });
 };
 
 
